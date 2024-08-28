@@ -1,4 +1,5 @@
 **/node_modules/
+**/static/*.mp4
+.svelte-kit
 .env
 .vscode
-**/static/*.mp4
