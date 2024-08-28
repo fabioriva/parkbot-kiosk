@@ -1,5 +1,6 @@
 export default {
   en: {
+    "face.text1": "Face Id",
     "gate.text1": "Hold button",
     "gate.text2": "to close",
     "pin.text1": "Enter your PIN",
@@ -8,6 +9,7 @@ export default {
     "start.text3": ".", 
   },
   it: {
+    "face.text1": "Face Id",
     "gate.text1": "Premere",
     "gate.text2": "per chiudere",
     "pin.text1": "Digitare PIN",
