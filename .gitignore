@@ -1,5 +1,6 @@
 **/node_modules/
 **/static/*.mp4
+build/
 .svelte-kit
 .env
 .vscode
