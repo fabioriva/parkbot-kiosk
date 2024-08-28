@@ -17,5 +17,5 @@
 	<Pin />
 {:else}
 	<!-- <div>Page {$pageNr}</div> -->
-	<Pin />
+	<Gate />
 {/if}
