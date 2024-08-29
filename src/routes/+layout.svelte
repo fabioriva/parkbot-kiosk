@@ -1,78 +1,71 @@
 <script>
-	import { PUBLIC_WS } from '$env/static/public';
-	import { onMount } from 'svelte';
-	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
-	import '../app.css';
-	import Clock from '$lib/Clock.svelte';
-	import Comm from '$lib/Comm.svelte';
-	import "@fontsource/roboto";
-	
-	let comm = false;
-	let page = 0
-	const pageNr = writable(page);
-	setContext('comm-context', { pageNr });
+  import { PUBLIC_WS } from "$env/static/public";
+  import { onMount } from "svelte";
+  import { setContext } from "svelte";
+  import { writable } from "svelte/store";
+  import "../app.css";
+  import Clock from "$lib/Clock.svelte";
+  import Comm from "$lib/Comm.svelte";
+  import "@fontsource/roboto";
 
-	onMount(() => {
-		const wsUri = PUBLIC_WS + '/info';
-		const websocket = new WebSocket(wsUri);
-		let pingInterval = 1000;
+  let comm = false;
+  let page = 0;
+  const pageNr = writable(page);
+  setContext("comm-context", { pageNr });
 
-		// function writeToScreen(message) {
-		// 	output.insertAdjacentHTML('afterbegin', `<p>${message}</p>`);
-		// }
+  onMount(() => {
+    const wsUri = PUBLIC_WS + "/info";
+    const websocket = new WebSocket(wsUri);
+    let pingInterval = 1000;
 
-		// function sendMessage(message) {
-		// 	console.log(`SENT: ${message}`);
-		// 	websocket.send(message);
-		// }
+    // function writeToScreen(message) {
+    // 	output.insertAdjacentHTML('afterbegin', `<p>${message}</p>`);
+    // }
 
-		websocket.onopen = (e) => {
-			console.log('CONNECTED');
-			// sendMessage('ping');
-			// pingInterval = setInterval(() => {
-			// 	sendMessage('ping');
-			// }, 5000);
-		};
+    // function sendMessage(message) {
+    // 	console.log(`SENT: ${message}`);
+    // 	websocket.send(message);
+    // }
 
-		websocket.onclose = (e) => {
-			console.log('DISCONNECTED');
-			clearInterval(pingInterval);
-		};
+    websocket.onopen = (e) => {
+      console.log("CONNECTED");
+      // sendMessage('ping');
+      // pingInterval = setInterval(() => {
+      // 	sendMessage('ping');
+      // }, 5000);
+    };
 
-		websocket.onerror = (e) => {
-			console.log(`ERROR: ${e}`);
-		};
+    websocket.onclose = (e) => {
+      console.log("DISCONNECTED");
+      clearInterval(pingInterval);
+    };
 
-		websocket.onmessage = (e) => {
-			// console.log(`RECEIVED: ${e.data}`);
-			const message = JSON.parse(e.data);
-			comm = message['comm'];
-			page = message['page'];
-			// console.log(comm, page)
-			// setContext('comm-context', { pageNr: page });
-			pageNr.set(page)
-		};
-	});
+    websocket.onerror = (e) => {
+      console.log(`ERROR: ${e}`);
+    };
+
+    websocket.onmessage = (e) => {
+      // console.log(`RECEIVED: ${e.data}`);
+      const message = JSON.parse(e.data);
+      comm = message["comm"];
+      page = message["page"];
+      // console.log(comm, page)
+      // setContext('comm-context', { pageNr: page });
+      pageNr.set(page);
+    };
+  });
 </script>
 
-<style>
-  h1 {
-    font-family: 'Roboto', sans-serif;
-  }
-</style>
-
-
 <div class="absolute top-0 text-center py-3 w-full">
-	<div class="flex">
-		<div class="flex-none w-28 h-14">
-			<Comm {comm} />
-		</div>
-		<div class="grow h-14">KIOSK 01</div>
-		<div class="flex-none w-28 h-14">
-			<Clock />
-		</div>
-	</div>
+  <div class="flex">
+    <div class="flex-none w-28 h-14">
+      <Comm {comm} />
+    </div>
+    <div class="grow h-14">KIOSK 01</div>
+    <div class="flex-none w-28 h-14">
+      <Clock />
+    </div>
+  </div>
 </div>
 
 <div class="flex flex-col h-screen">
@@ -82,5 +75,11 @@
 </div>
 
 <div class="absolute bottom-0 text-center py-3 w-full">
-	© {new Date().getFullYear()} Sotefin SA
+  © {new Date().getFullYear()} Sotefin SA
 </div>
+
+<!-- <style>
+  h1 {
+    font-family: "Roboto", sans-serif;
+  }
+</style> -->

@@ -1,21 +1,31 @@
 <script>
   import * as faceapi from "face-api.js";
   import { onMount } from "svelte";
-  import { t } from "$lib/i18n";
-  import Text from "$lib/Text.svelte";
+  // import { t } from "$lib/i18n";
+  // import Text from "$lib/Text.svelte";
 
-	const MODEL_URL = '/models';
-	const labels = ['fabio', 'raffa', 'giacomo', 'marco', 'roberta', 'elio'];
+  const MODEL_URL = "/models";
+  const labels = ["fabio", "raffa", "giacomo", "marco", "roberta", "elio"];
 
   onMount(async () => {
     try {
       // load the models
       await Promise.all([
         faceapi.loadSsdMobilenetv1Model(MODEL_URL),
-        faceapi.loadTinyFaceDetectorModel(MODEL_URL),
+        // faceapi.loadTinyFaceDetectorModel(MODEL_URL),
         faceapi.loadFaceLandmarkModel(MODEL_URL),
         faceapi.loadFaceRecognitionModel(MODEL_URL),
       ]);
+      // ssd_mobilenetv1 options
+      let minConfidence = 0.5;
+      const options = new faceapi.SsdMobilenetv1Options({ minConfidence });
+      // tiny_face_detector options
+      // let inputSize = 512;
+      // let scoreThreshold = 0.5;
+      // const options = new faceapi.TinyFaceDetectorOptions({
+      //   inputSize,
+      //   scoreThreshold,
+      // });
       // access webcam
       const stream = await navigator.mediaDevices.getUserMedia({
         video: true,
@@ -29,7 +39,6 @@
       canvas.style.top = videoFeedEl.offsetTop;
       canvas.height = videoFeedEl.height;
       canvas.width = videoFeedEl.width;
-      console.log(canvas);
       // ...
       const labeledFaceDescriptors = await Promise.all(
         labels.map(async (label) => {
@@ -39,7 +48,7 @@
 
           // detect the face with the highest score in the image and compute it's landmarks and face descriptor
           const fullFaceDescription = await faceapi
-            .detectSingleFace(img)
+            .detectSingleFace(img, options)
             .withFaceLandmarks()
             .withFaceDescriptor();
 
@@ -54,9 +63,13 @@
       // ...
       setInterval(async () => {
         let fullFaceDescriptions = await faceapi
-          .detectAllFaces(videoFeedEl)
+          .detectAllFaces(videoFeedEl, options)
           .withFaceLandmarks()
           .withFaceDescriptors();
+
+        if (!fullFaceDescriptions.length) {
+          return;
+        }
 
         fullFaceDescriptions = faceapi.resizeResults(
           fullFaceDescriptions,
@@ -72,9 +85,8 @@
         const results = fullFaceDescriptions.map((fd) =>
           faceMatcher.findBestMatch(fd.descriptor)
         );
-        // console.log(results);
-        // draw
-        //first, clear the canvas
+
+        // first, clear the canvas
         canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
         results.forEach((bestMatch, i) => {
@@ -91,16 +103,16 @@
 </script>
 
 <div id="container">
-  <Text text={$t("face.text1")} />
   <video id="video-feed" width="320" height="240" autoplay muted></video>
   <canvas id="overlay" />
+  <!-- <Text text={$t("face.text1")} /> -->
 </div>
 
 <style>
   #container {
     position: relative;
   }
-	#overlay {
-		position: absolute;
-	}
+  #overlay {
+    position: absolute;
+  }
 </style>
