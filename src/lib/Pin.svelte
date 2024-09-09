@@ -29,20 +29,20 @@
 <Text text={view} />
 
 <div class="mt-16 grid grid-cols-4 gap-3">
-  <Key key={"1"} on:submit={handleSubmit} />
-  <Key key={"2"} on:submit={handleSubmit} />
-  <Key key={"3"} on:submit={handleSubmit} />
-  <Key key={"C"} on:submit={handleSubmit} />
-  <Key key={"4"} on:submit={handleSubmit} />
-  <Key key={"5"} on:submit={handleSubmit} />
-  <Key key={"6"} on:submit={handleSubmit} />
-  <Key key={"D"} on:submit={handleSubmit} />
-  <Key key={"7"} on:submit={handleSubmit} />
-  <Key key={"8"} on:submit={handleSubmit} />
-  <Key key={"9"} on:submit={handleSubmit} />
-  <Key key={"E"} on:submit={handleSubmit} />
-  <Key key={"A"} on:submit={handleSubmit} />
-  <Key key={"0"} on:submit={handleSubmit} />
-  <Key key={"B"} on:submit={handleSubmit} />
-  <Key key={"F"} on:submit={handleSubmit} />
+  <Key key={"1"} on:digit={handleSubmit} />
+  <Key key={"2"} on:digit={handleSubmit} />
+  <Key key={"3"} on:digit={handleSubmit} />
+  <Key key={"C"} on:digit={handleSubmit} />
+  <Key key={"4"} on:digit={handleSubmit} />
+  <Key key={"5"} on:digit={handleSubmit} />
+  <Key key={"6"} on:digit={handleSubmit} />
+  <Key key={"D"} on:digit={handleSubmit} />
+  <Key key={"7"} on:digit={handleSubmit} />
+  <Key key={"8"} on:digit={handleSubmit} />
+  <Key key={"9"} on:digit={handleSubmit} />
+  <Key key={"E"} on:digit={handleSubmit} />
+  <Key key={"A"} on:digit={handleSubmit} />
+  <Key key={"0"} on:digit={handleSubmit} />
+  <Key key={"B"} on:digit={handleSubmit} />
+  <Key key={"F"} on:digit={handleSubmit} />
 </div>
