@@ -1,12 +1,20 @@
 <script>
+  import { onMount } from "svelte";
   import { t, locale, locales } from "$lib/i18n";
 
+  let h, w;
   let pin = "";
   $: view = pin ? pin.replace(/\d(?!$)/g, "•") : $t("pin.text1");
+
+  onMount(async () => {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    console.log("h", h, "w", w);
+  });
 </script>
 
 <div class="space-x-3 space-y-8">
-  <div>{view}</div>
+  <div>{h} - {w} - {view}</div>
 
   <button
     on:click={() => {
