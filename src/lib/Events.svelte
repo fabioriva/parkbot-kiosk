@@ -8,8 +8,8 @@
   $: view = pin ? pin.replace(/\d(?!$)/g, "•") : $t("pin.text1");
 
   const digit = async (key) => {
-    console.log(key);
     pin += key;
+    console.log(key, pin, pin.length);
     if (pin.length >= 3) {
       // let res = await fetch(PUBLIC_API + '/pin').then((x) => x.json());
       // const url = PUBLIC_API + '/pin'
@@ -100,7 +100,7 @@
 </div>
 
 <div class="space-x-3 space-y-8">
-  <div>h: {h} w: {w} - {view}</div>
+  <div>h: {h} w: {w} pin: {pin ? pin : null} length: {pin.length}</div>
 
   <button
     on:click={() => {
