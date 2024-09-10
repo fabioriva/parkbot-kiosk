@@ -4,7 +4,7 @@
 	import Gate from '$lib/Gate.svelte';
 	import Pin from '$lib/Pin.svelte';
 	import Start from '$lib/Start.svelte';
-
+import Events from '$lib/Events.svelte';
 	const { pageNr } = getContext('comm-context');
 	// console.log($pageNr);
 	// export let page;
@@ -15,7 +15,8 @@
 {:else if $pageNr === 2}
 	<Gate />
 {:else if $pageNr === 3}
-	<Pin />
+	<!-- <Pin /> -->
+	 <Events />
 {:else}
 	<!-- <div>Page {$pageNr}</div> -->
 	<FaceId />
