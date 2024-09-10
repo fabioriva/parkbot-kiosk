@@ -9,6 +9,6 @@ export async function POST({ request }) {
     body: JSON.stringify({ pin }),
   });
   const json_ = await res.json();
-  // console.log(`submitted ${pin}`, pin.length);
+  console.log(`submitted ${pin}`, pin.length);
   return json(json_);
 }
