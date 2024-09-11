@@ -8,19 +8,20 @@
   import Comm from "$lib/Comm.svelte";
   import "@fontsource/roboto";
 
+  let h = 0,
+    w = 0;
   let comm = false;
   let page = 0;
   const pageNr = writable(page);
   setContext("comm-context", { pageNr });
 
   onMount(() => {
+    w = window.innerWidth;
+    h = window.innerHeight;
+
     const wsUri = PUBLIC_WS + "/info";
     const websocket = new WebSocket(wsUri);
     let pingInterval = 1000;
-
-    // function writeToScreen(message) {
-    // 	output.insertAdjacentHTML('afterbegin', `<p>${message}</p>`);
-    // }
 
     // function sendMessage(message) {
     // 	console.log(`SENT: ${message}`);
@@ -69,13 +70,13 @@
 </div>
 
 <div class="flex flex-col h-screen">
-	<div class="m-auto text-center bg-opacity-0">
-		<slot />
-	</div>
+  <div class="m-auto text-center bg-opacity-0">
+    <slot />
+  </div>
 </div>
 
 <div class="absolute bottom-0 text-center py-3 w-full">
-  © {new Date().getFullYear()} Sotefin SA
+  w: {w} h: {h} © {new Date().getFullYear()} Sotefin SA
 </div>
 
 <!-- <style>

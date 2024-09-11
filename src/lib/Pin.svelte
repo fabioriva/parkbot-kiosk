@@ -14,49 +14,24 @@
     if (pin.length >= 3) {
       // let res = await fetch(PUBLIC_API + '/pin').then((x) => x.json());
       // const url = PUBLIC_API + '/pin'
-      const url = "/api/pin";
-      const res = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({ pin }),
-      });
+      // const url = "/api/pin";
+      // const res = await fetch(url, {
+      //   method: "POST",
+      //   body: JSON.stringify({ pin }),
+      // });
+      const url = `/api/pin?pin=${pin}`;
+      const res = await fetch(url);
       const json = await res.json();
       console.log(json);
       pin = "";
     }
   }
-
-  async function press(key) {
-    pin += key
-    console.log(key, pin);
-    if (pin.length >= 3) {
-      // let res = await fetch(PUBLIC_API + '/pin').then((x) => x.json());
-      // const url = PUBLIC_API + '/pin'
-      const url = "/api/pin";
-      const res = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({ pin }),
-      });
-      const json = await res.json();
-      console.log(json);
-      pin = "";
-  }
-}
 </script>
 
 <Text text={view} />
 
-
-
 <div class="mt-16 grid grid-cols-4 gap-3">
-  <!-- <Key key={"1"} on:digit={handleSubmit} /> -->
-  <button
-  class="{Number('1')
-    ? 'text-slate-700 border-slate-700 active:bg-slate-700'
-    : 'text-blue-700 border-blue-700 active:bg-blue-700'} bg-transparent active:text-white text-6xl font-semibold py-2 px-6 border-2 active:border-transparent rounded-lg ring-offset-2 ring-2"
-  on:touchstart={() => press('1')}
->
-  1
-</button>
+  <Key key={"1"} on:digit={handleSubmit} />
   <Key key={"2"} on:digit={handleSubmit} />
   <Key key={"3"} on:digit={handleSubmit} />
   <Key key={"C"} on:digit={handleSubmit} />
