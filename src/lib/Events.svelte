@@ -13,11 +13,13 @@
     if (pin.length >= 3) {
       // let res = await fetch(PUBLIC_API + '/pin').then((x) => x.json());
       // const url = PUBLIC_API + '/pin'
-      const url = "/api/pin";
-      const res = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({ pin }),
-      });
+      // const url = "/api/pin";
+      // const res = await fetch(url, {
+      //   method: "POST",
+      //   body: JSON.stringify({ pin }),
+      // });
+      const url = `/api/pin?pin=${pin}`;
+      const res = await fetch(url);
       const json = await res.json();
       console.log(json);
       pin = "";
