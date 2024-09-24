@@ -2,6 +2,7 @@
   import { getContext } from "svelte";
   // import FaceId from "$lib/FaceId.svelte";
   import Gate from "$lib/Gate.svelte";
+  import Globe from "$lib/Globe.svelte";
   import Pin from "$lib/Pin.svelte";
   import Start from "$lib/Start.svelte";
   // import Events from "$lib/Events.svelte";
@@ -28,6 +29,7 @@
     ></iframe>
   </div>
 {:else}
-  <div>Page {$pageNr}</div>
+  <!-- <div>Page {$pageNr}</div> -->
   <!-- <Events /> -->
+  <Globe />
 {/if}

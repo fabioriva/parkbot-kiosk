@@ -75,12 +75,6 @@
   </div>
 </div>
 
-<div class="absolute bottom-0 text-center py-3 w-full">
+<div class="absolute bottom-0 flex justify-center items-center py-3 w-full">
   w: {w} h: {h} © {new Date().getFullYear()} Sotefin SA
 </div>
-
-<!-- <style>
-  h1 {
-    font-family: "Roboto", sans-serif;
-  }
-</style> -->
