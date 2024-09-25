@@ -3,6 +3,7 @@
   import { onMount } from "svelte";
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
+  import { goto } from "$app/navigation";
   import "../app.css";
   import Clock from "$lib/Clock.svelte";
   import Comm from "$lib/Comm.svelte";
@@ -53,6 +54,17 @@
       // console.log(comm, page)
       // setContext('comm-context', { pageNr: page });
       pageNr.set(page);
+
+      switch (page) {
+        case 0:
+          goto("/globe");
+          break;
+        case 7:
+          goto("/faceid");
+          break;
+        default:
+          goto("/");
+      }
     };
   });
 </script>

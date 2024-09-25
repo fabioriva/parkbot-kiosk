@@ -3,24 +3,33 @@
   import { t } from "$lib/i18n";
   import Text from "$lib/Text.svelte";
 
-  let data = { message: "..." };
+  let data = null; // { message: "..." };
 
   async function handleTouchEnd(event) {
     // console.log(event, 'UN-PRESSED');
-		// const url = PUBLIC_API + "/unpress"
+    // const url = PUBLIC_API + "/unpress"
     data = await fetch("/api/unpress").then((x) => x.json());
   }
   async function handleTouchStart(event) {
     // console.log(event, 'PRESSED');
-		// const url = PUBLIC_API + "/press"
+    // const url = PUBLIC_API + "/press"
     data = await fetch("/api/press").then((x) => x.json());
   }
 </script>
 
-<div class="flex flex-col space-y-1">
+<!-- <div class="flex flex-col space-y-1">
   <Text text={$t("gate.text1")} />
   <Text text={$t("gate.text2")} />
-</div>
+</div> -->
+
+{#if data}
+  <p class="h-16 uppercase font-bold text-5xl">{data.message}</p>
+{:else}
+  <div class="flex flex-col space-y-1">
+    <Text text={$t("gate.text1")} />
+    <Text text={$t("gate.text2")} />
+  </div>
+{/if}
 
 <button
   type="button"
@@ -30,4 +39,6 @@
 >
 </button>
 
-<h1 class="text-6xl text-slate-900 font-semibold">{data.message}</h1>
+<!-- <h1 class="text-6xl text-slate-900 font-semibold">
+  {data ? data.message : ""}
+</h1> -->

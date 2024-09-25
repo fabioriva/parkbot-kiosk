@@ -1,4 +1,10 @@
 <script>
+  import FaceId from "$lib/FaceId.svelte";
+</script>
+
+<FaceId />
+
+<!-- <script>
   import * as faceapi from "face-api.js";
   import { onMount } from "svelte";
   import { t } from "$lib/i18n";
@@ -103,4 +109,4 @@
 	#overlay {
 		position: absolute;
 	}
-</style>
+</style> -->

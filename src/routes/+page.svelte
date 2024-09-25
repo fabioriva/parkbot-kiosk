@@ -1,8 +1,6 @@
 <script>
   import { getContext } from "svelte";
-  // import FaceId from "$lib/FaceId.svelte";
   import Gate from "$lib/Gate.svelte";
-  import Globe from "$lib/Globe.svelte";
   import Pin from "$lib/Pin.svelte";
   import Start from "$lib/Start.svelte";
   // import Events from "$lib/Events.svelte";
@@ -17,7 +15,16 @@
 {:else if $pageNr === 3}
   <Pin />
 {:else if $pageNr === 4}
-  <!-- <FaceId /> -->
+  <div class="space-y-16">
+    <p class="text-8xl">✅</p>
+    <p class="text-5xl">Success message</p>
+  </div>
+{:else if $pageNr === 5}
+  <div class="space-y-16">
+    <p class="text-8xl">❌</p>
+    <p class="text-5xl">Error message</p>
+  </div>
+{:else if $pageNr === 6}
   <div>
     <p>picamera video streaming</p>
     <iframe
@@ -29,7 +36,6 @@
     ></iframe>
   </div>
 {:else}
-  <!-- <div>Page {$pageNr}</div> -->
+  <div>Page {$pageNr}</div>
   <!-- <Events /> -->
-  <Globe />
 {/if}

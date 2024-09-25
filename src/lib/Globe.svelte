@@ -34,6 +34,7 @@
 
 <main class="App">
   <img src="/sotefin.png" alt="Sotefin SA" />
+  <!-- <p class="pt-6">Computerized Parking Systems Worldwide</p> -->
   <!-- <h1>SOTEFIN WORLDWIDE</h1>
   <p>
     A lightweight (5kB) WebGL globe lib:
@@ -55,7 +56,7 @@
     height: 100vh;
   }
 
-  a {
+  /* a {
     color: royalblue;
-  }
+  } */
 </style>
