@@ -18,7 +18,7 @@
   // }
 </script>
 
-<video autoplay loop muted src="seattle.mp4">
+<video autoplay loop muted src="seattle.mp4" class="px-3">
   <!-- <track kind="captions" /> -->
 </video>
 

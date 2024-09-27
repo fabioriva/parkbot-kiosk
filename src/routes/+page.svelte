@@ -9,14 +9,7 @@
 </script>
 
 {#if $pageNr === 1}
-  <!-- <Start /> -->
-  <div class="space-y-8">
-    <img src="icons8-success-160.png" alt="success" class="mx-auto" />
-    <!-- <p class="text-8xl">✅</p> -->
-    <p class="leading-tight px-8 text-5xl uppercase">
-      Success message very long long long message
-    </p>
-  </div>
+  <Start />
 {:else if $pageNr === 2}
   <Gate />
 {:else if $pageNr === 3}
@@ -25,13 +18,13 @@
   <div class="space-y-8">
     <img src="icons8-success-160.png" alt="success" class="mx-auto" />
     <!-- <p class="text-8xl">✅</p> -->
-    <p class="text-5xl">Success message</p>
+    <p class="leading-[1.10] px-8 text-5xl uppercase">Success message</p>
   </div>
 {:else if $pageNr === 5}
   <div class="space-y-8">
     <img src="icons8-error-160.png" alt="error" class="mx-auto" />
     <!-- <p class="text-8xl">❌</p> -->
-    <p class="text-5xl">Error message</p>
+    <p class="leading-[1.10] px-8 text-5xl uppercase">Error message</p>
   </div>
 {:else if $pageNr === 6}
   <div>
