@@ -1,4 +1,5 @@
 <script>
+  import { PUBLIC_CAMERA_SRC } from "$env/static/public";
   import { getContext } from "svelte";
   import Gate from "$lib/Gate.svelte";
   import Pin from "$lib/Pin.svelte";
@@ -30,7 +31,7 @@
   <div>
     <p>picamera video streaming</p>
     <iframe
-      src="http://192.168.20.201:5000"
+      src={PUBLIC_CAMERA_SRC}
       title="picamera video streaming"
       width="360"
       height="280"
