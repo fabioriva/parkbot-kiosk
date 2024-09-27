@@ -69,24 +69,28 @@
   });
 </script>
 
-<div class="absolute top-0 text-center py-3 w-full">
-  <div class="flex">
-    <div class="flex-none w-28 h-14">
-      <Comm {comm} />
-    </div>
-    <div class="grow h-14">KIOSK 01</div>
-    <div class="flex-none w-28 h-14">
-      <Clock />
+<div class="w-[480px]">
+  <div class="absolute top-0 text-center py-3 w-[480px]">
+    <div class="flex">
+      <div class="flex-none w-28 h-14">
+        <Comm {comm} />
+      </div>
+      <div class="grow h-14">KIOSK 01</div>
+      <div class="flex-none w-28 h-14">
+        <Clock />
+      </div>
     </div>
   </div>
-</div>
 
-<div class="flex flex-col h-screen">
-  <div class="m-auto text-center bg-opacity-0">
-    <slot />
+  <div class="flex flex-col h-screen">
+    <div class="m-auto text-center bg-opacity-0">
+      <slot />
+    </div>
   </div>
-</div>
 
-<div class="absolute bottom-0 flex justify-center items-center py-3 w-full">
-  w: {w} h: {h} © {new Date().getFullYear()} Sotefin SA
+  <div
+    class="absolute bottom-0 flex justify-center items-center py-3 w-[480px]"
+  >
+    w: {w} h: {h} © {new Date().getFullYear()} Sotefin SA
+  </div>
 </div>
