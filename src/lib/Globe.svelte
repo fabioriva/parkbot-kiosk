@@ -20,9 +20,13 @@
       markerColor: [0.1, 0.8, 1],
       glowColor: [1, 1, 1],
       markers: [
+        { location: [46.003601, 8.95362], size: 0.1 }, // Lugano
         { location: [37.7595, -122.4367], size: 0.05 }, // Seattle
         { location: [40.7128, -74.006], size: 0.05 }, // New York
-        { location: [46.003601, 8.95362], size: 0.1 }, // Lugano
+        { location: [28.613939, 77.209023], size: 0.05 }, // New Delhi
+        { location: [25.204849, 55.270782], size: 0.05 }, // Dubai
+        { location: [39.904202, 116.407394], size: 0.05 }, // Beijing
+        { location: [-36.848461, 174.763336], size: 0.05 }, // Auckland
       ],
       onRender: (state) => {
         state.phi = phi;

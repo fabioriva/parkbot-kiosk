@@ -22,7 +22,7 @@
 
     const wsUri = PUBLIC_WS + "/info";
     const websocket = new WebSocket(wsUri);
-    let pingInterval = 1000;
+    // let pingInterval = 1000;
 
     // function sendMessage(message) {
     // 	console.log(`SENT: ${message}`);
@@ -39,7 +39,7 @@
 
     websocket.onclose = (e) => {
       console.log("DISCONNECTED");
-      clearInterval(pingInterval);
+      // clearInterval(pingInterval);
     };
 
     websocket.onerror = (e) => {
@@ -51,7 +51,6 @@
       const message = JSON.parse(e.data);
       comm = message["comm"];
       page = message["page"];
-      // console.log(comm, page)
       // setContext('comm-context', { pageNr: page });
       pageNr.set(page);
 
