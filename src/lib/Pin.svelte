@@ -1,11 +1,16 @@
 <script>
   // import { PUBLIC_API } from "$env/static/public";
+  import { onMount } from "svelte";
   import { t, locale, locales } from "$lib/i18n";
   import Key from "./Key.svelte";
   import Text from "./Text.svelte";
 
-  let pin = "";
+  let pin;
   $: view = pin ? pin.replace(/\d(?!$)/g, "•") : $t("pin.text1");
+
+  onMount(() => {
+    pin = "";
+  });
 
   async function handleSubmit(e) {
     // console.log(e.detail.key);
@@ -23,7 +28,7 @@
       const res = await fetch(url);
       const json = await res.json();
       console.log(json);
-      pin = "";
+      // pin = "";
     }
   }
 </script>
