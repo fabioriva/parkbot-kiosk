@@ -17,6 +17,51 @@
     // data = await fetch("/api/press").then((x) => x.json());
     await fetch("/api/press");
   }
+
+  document.addEventListener("touchstart", touch2Mouse, true);
+  document.addEventListener("touchmove", touch2Mouse, true);
+  document.addEventListener("touchend", touch2Mouse, true);
+
+  function touch2Mouse(e) {
+    var theTouch = e.changedTouches[0];
+    var mouseEv;
+
+    switch (e.type) {
+      case "touchstart":
+        mouseEv = "mousedown";
+        break;
+      case "touchend":
+        mouseEv = "mouseup";
+        break;
+      case "touchmove":
+        mouseEv = "mousemove";
+        break;
+      default:
+        return;
+    }
+
+    var mouseEvent = document.createEvent("MouseEvent");
+    mouseEvent.initMouseEvent(
+      mouseEv,
+      true,
+      true,
+      window,
+      1,
+      theTouch.screenX,
+      theTouch.screenY,
+      theTouch.clientX,
+      theTouch.clientY,
+      false,
+      false,
+      false,
+      false,
+      0,
+      null
+    );
+    theTouch.target.dispatchEvent(mouseEvent);
+
+    e.preventDefault();
+  }
 </script>
 
 <!-- <div class="flex flex-col space-y-1">
@@ -43,8 +88,7 @@
   class="rounded-full my-16 p-32 bg-amber-500 bg-gradient-to-br from-amber-300 via-amber-500 active:bg-amber-700 shadow-2xl shadow-slate-700 active:shadow-slate-900"
   on:touchend={handleTouchEnd}
   on:touchstart={handleTouchStart}
->
-</button>
+/>
 
 <!-- <button
   type="button"
