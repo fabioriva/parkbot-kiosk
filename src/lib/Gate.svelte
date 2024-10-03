@@ -1,6 +1,6 @@
 <script>
   // import { PUBLIC_API } from "$env/static/public";
-  import { getContext } from "svelte";
+  import { getContext, onMount } from "svelte";
   import { t } from "$lib/i18n";
   import Text from "$lib/Text.svelte";
 
@@ -18,6 +18,14 @@
     // data = await fetch("/api/press").then((x) => x.json());
     await fetch("/api/press");
   }
+
+  onMount(() => {
+    const button = document.getElementById("close"); // select the button element
+    // console.log("element", button);
+    button.addEventListener("click", function () {
+      button.classList.toggle("active:shadow-slate-900"); // toggle the 'selected' class on click
+    });
+  });
 </script>
 
 <div class="flex flex-col space-y-16">
@@ -37,8 +45,9 @@
 </div>
 
 <button
+  id="close"
   type="button"
-  class="rounded-full my-16 p-32 bg-amber-500 bg-gradient-to-br from-amber-300 via-amber-500 active:bg-amber-700 shadow-2xl shadow-slate-700 active:shadow-slate-900"
+  class="rounded-full my-16 p-32 bg-amber-500 bg-gradient-to-br from-amber-300 via-amber-500 active:bg-amber-700 shadow-2xl"
   on:touchend={handleTouchEnd}
   on:touchstart={handleTouchStart}
 />
