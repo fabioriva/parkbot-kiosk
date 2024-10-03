@@ -1,8 +1,11 @@
 export default {
   en: {
     "face.text1": "Face Id",
-    "gate.text1": "Hold button",
-    "gate.text2": "to close",
+    "gate.text0": "Hold button to close",
+    "gate.text1": "Gate closed",
+    "gate.text2": "Gate opened",
+    "gate.text3": "Gate closing",
+    "gate.text4": "Gate opening",
     "pin.text1": "Enter your PIN",
     "start.text1": "Swipe tag",
     "start.text2": "to start",
@@ -10,16 +13,14 @@ export default {
   },
   it: {
     "face.text1": "Face Id",
-    "gate.text1": "Premere",
-    "gate.text2": "per chiudere",
+    "gate.text0": "Premere per chiudere",
+    "gate.text1": "Porta chiusa",
+    "gate.text2": "Porta aperta",
+    "gate.text3": "In chiusura",
+    "gate.text4": "In apertura",
     "pin.text1": "Digitare PIN",
     "start.text1": "Avvicinare",
     "start.text2": "la tessera",
     "start.text3": "per iniziare",
   },
-  // es: {
-  //   "homepage.title": "¡Hola Mundo!",
-  //   "homepage.welcome": "Hola, <strong>{{name}}</strong>, ¿cómo estás?",
-  //   "homepage.time": "La hora actual es: {{time}}",
-  // },
 };

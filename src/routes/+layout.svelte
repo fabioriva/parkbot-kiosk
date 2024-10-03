@@ -16,6 +16,10 @@
   const pageNr = writable(page);
   setContext("comm-context", { pageNr });
 
+  // let wsData = {};
+  const data = writable({});
+  setContext("data-context", data);
+
   onMount(() => {
     w = window.innerWidth;
     h = window.innerHeight;
@@ -49,6 +53,10 @@
     websocket.onmessage = (e) => {
       // console.log(`RECEIVED: ${e.data}`);
       const message = JSON.parse(e.data);
+      // console.log(message);
+      data.set(message);
+      // console.log($data);
+
       comm = message["comm"];
       page = message["page"];
       // setContext('comm-context', { pageNr: page });
