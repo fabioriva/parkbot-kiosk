@@ -31,7 +31,9 @@
     <Text text={$t("gate.text2")} />
   {:else if $data.successMesg === 3}
     <Text text={$t("gate.text3")} />
-  {:else if $data.successMesg === 4}{/if}
+  {:else if $data.successMesg === 4}
+    <Text text={$t("gate.text4")} />
+  {/if}
 </div>
 
 <button
