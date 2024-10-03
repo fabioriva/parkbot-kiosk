@@ -19,13 +19,12 @@
     await fetch("/api/press");
   }
 
-  onMount(() => {
-    const button = document.getElementById("close"); // select the button element
-    // console.log("element", button);
-    button.addEventListener("click", function () {
-      button.classList.toggle("active:shadow-slate-900"); // toggle the 'selected' class on click
-    });
-  });
+  // onMount(() => {
+  //   const button = document.getElementById("close"); // select the button element
+  //   button.addEventListener("click", function () {
+  //     button.classList.toggle("active:shadow-slate-900"); // toggle the 'selected' class on click
+  //   });
+  // });
 </script>
 
 <div class="flex flex-col space-y-16">
@@ -47,7 +46,7 @@
 <button
   id="close"
   type="button"
-  class="rounded-full my-16 p-32 bg-amber-500 bg-gradient-to-br from-amber-300 via-amber-500 active:bg-amber-700 shadow-2xl"
+  class="rounded-full my-16 p-32 bg-amber-500 bg-gradient-to-br from-amber-300 via-amber-500 active:bg-amber-700 shadow-2xl shadow-slate-600 active:shadow-slate-900"
   on:touchend={handleTouchEnd}
   on:touchstart={handleTouchStart}
 />
