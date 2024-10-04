@@ -6,55 +6,53 @@
 
   const data = getContext("data-context");
 
-  async function handleTouchEnd() {
-    // e.preventDefault();
-    // const url = PUBLIC_API + "/unpress"
-    // data = await fetch("/api/unpress").then((x) => x.json());
-    await fetch("/api/unpress");
-  }
-  async function handleTouchStart() {
-    // e.preventDefault();
-    // const url = PUBLIC_API + "/press"
-    // data = await fetch("/api/press").then((x) => x.json());
-    await fetch("/api/press");
-  }
-
-  let name;
+  // async function handleTouchEnd() {
+  //   // e.preventDefault();
+  //   // const url = PUBLIC_API + "/unpress"
+  //   // data = await fetch("/api/unpress").then((x) => x.json());
+  //   await fetch("/api/unpress");
+  // }
+  // async function handleTouchStart() {
+  //   // e.preventDefault();
+  //   // const url = PUBLIC_API + "/press"
+  //   // data = await fetch("/api/press").then((x) => x.json());
+  //   await fetch("/api/press");
+  // }
 
   let isPressed = false;
 
-  const press = () => {
+  const press = async () => {
     console.log("press");
     isPressed = true;
+    await fetch("/api/press");
   };
-  const unpress = () => {
+  const unpress = async () => {
     console.log("unpress");
     isPressed = false;
+    await fetch("/api/unpress");
   };
 
-  onMount(() => {
-    let btn = document.getElementById("btn");
-    // btn?.addEventListener("touchmove", setActiveState);
+  // onMount(() => {
+  //   let btn = document.getElementById("btn");
+  //   // btn?.addEventListener("touchmove", setActiveState);
 
-    btn?.addEventListener("click", setActiveState);
-    btn?.addEventListener("mousedown", eventCheck);
-    btn?.addEventListener("mouseenter", eventCheck);
-    btn?.addEventListener("mouseup", eventCheck);
-    function eventCheck(e) {
-      console.log(e);
-      name = e.type;
-    }
-    function setActiveState() {
-      console.log("setActiveState");
-      btn?.classList.add(
-        // "active:bg-gradient-to-br from-amber-500 to-amber-600 active:text-amber-600"
-        "active"
-      );
-    }
-  });
+  //   btn?.addEventListener("click", setActiveState);
+  //   btn?.addEventListener("mousedown", eventCheck);
+  //   btn?.addEventListener("mouseenter", eventCheck);
+  //   btn?.addEventListener("mouseup", eventCheck);
+  //   function eventCheck(e) {
+  //     console.log(e);
+  //     name = e.type;
+  //   }
+  //   function setActiveState() {
+  //     console.log("setActiveState");
+  //     btn?.classList.add(
+  //       // "active:bg-gradient-to-br from-amber-500 to-amber-600 active:text-amber-600"
+  //       "active"
+  //     );
+  //   }
+  // });
 </script>
-
-<p>{name}</p>
 
 <div class="mb-8">
   {#if $data.successMesg === 1}
@@ -76,8 +74,21 @@
   on:touchend={handleTouchEnd}
   on:touchstart={handleTouchStart}>PUSH TO CLOSE</button> -->
 
-<button on:touchstart={press} on:touchend={unpress} class:pressed={isPressed}
+<button
+  id="btn-close"
+  class={`w-[256px] h-[256px] rounded-full bg-yellow-500 border-4 border-yellow-600 opacity-100 shadow-2xl shadow-slate-700 font-bold text-2xl text-amber-700 ${isPressed && "bg-gradient-to-br from-amber-500 to-amber-600 text-amber-600"}`}
+  on:touchend={unpress}
+  on:touchstart={press}>PUSH TO CLOSE</button
+>
+
+<!-- <button on:touchstart={press} on:touchend={unpress} class:pressed={isPressed}
   >PUSH TO CLOSE</button
+> -->
+
+<!-- <button
+  on:touchstart={press}
+  on:touchend={unpress}
+  class={`${!isPressed ? "bg-red-500" : "bg-yellow-500"}`}>PUSH TO CLOSE</button
 >
 
 <style>
@@ -87,4 +98,4 @@
   .unpressed {
     background-color: red;
   }
-</style>
+</style> -->
