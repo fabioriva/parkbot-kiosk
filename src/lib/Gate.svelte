@@ -48,5 +48,5 @@
   id="btn-close"
   class="w-[256px] h-[256px] rounded-full bg-yellow-500 border-4 border-yellow-600 opacity-100 shadow-2xl shadow-slate-700 active:bg-gradient-to-br from-amber-500 to-amber-600 font-bold text-2xl text-amber-700 active:text-amber-600"
   on:touchend={handleTouchEnd}
-  on:touchstart={handleTouchStart}>PUSH TO CLOSE</button
+  on:click={handleTouchStart}>PUSH TO CLOSE</button
 >
