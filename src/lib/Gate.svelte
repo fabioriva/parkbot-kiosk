@@ -21,8 +21,7 @@
 
   onMount(() => {
     let btn = document.getElementById("btn-close");
-    btn?.addEventListener("touchstart", setActiveState);
-    console.log(btn);
+    btn?.addEventListener("touchmove", setActiveState);
     function setActiveState() {
       console.log("setActiveState");
       btn?.click();
