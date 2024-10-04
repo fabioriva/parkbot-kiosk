@@ -19,15 +19,42 @@
     await fetch("/api/press");
   }
 
+  let name;
+
+  let isPressed = false;
+
+  const press = () => {
+    console.log("press");
+    isPressed = true;
+  };
+  const unpress = () => {
+    console.log("unpress");
+    isPressed = false;
+  };
+
   onMount(() => {
-    let btn = document.getElementById("btn-close");
-    btn?.addEventListener("touchmove", setActiveState);
+    let btn = document.getElementById("btn");
+    // btn?.addEventListener("touchmove", setActiveState);
+
+    btn?.addEventListener("click", setActiveState);
+    btn?.addEventListener("mousedown", eventCheck);
+    btn?.addEventListener("mouseenter", eventCheck);
+    btn?.addEventListener("mouseup", eventCheck);
+    function eventCheck(e) {
+      console.log(e);
+      name = e.type;
+    }
     function setActiveState() {
       console.log("setActiveState");
-      btn?.click();
+      btn?.classList.add(
+        // "active:bg-gradient-to-br from-amber-500 to-amber-600 active:text-amber-600"
+        "active"
+      );
     }
   });
 </script>
+
+<p>{name}</p>
 
 <div class="mb-8">
   {#if $data.successMesg === 1}
@@ -43,9 +70,21 @@
   {/if}
 </div>
 
-<button
+<!-- <button
   id="btn-close"
   class="w-[256px] h-[256px] rounded-full bg-yellow-500 border-4 border-yellow-600 opacity-100 shadow-2xl shadow-slate-700 active:bg-gradient-to-br from-amber-500 to-amber-600 font-bold text-2xl text-amber-700 active:text-amber-600"
   on:touchend={handleTouchEnd}
-  on:touchstart={handleTouchStart}>PUSH TO CLOSE</button
+  on:touchstart={handleTouchStart}>PUSH TO CLOSE</button> -->
+
+<button on:touchstart={press} on:touchend={unpress} class:pressed={isPressed}
+  >PUSH TO CLOSE</button
 >
+
+<style>
+  .pressed {
+    background-color: blue;
+  }
+  .unpressed {
+    background-color: red;
+  }
+</style>
