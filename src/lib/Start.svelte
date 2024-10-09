@@ -15,7 +15,9 @@
     width="480"
     height="270"
     scrolling="no"
-    style="margin: auto;"
+    marginwidth="0"
+    marginheight="0"
+    frameborder="0"
   ></iframe>
   <div class="flex flex-col">
     <Text text={$t("start.text1")} />
