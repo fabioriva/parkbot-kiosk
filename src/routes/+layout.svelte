@@ -62,16 +62,16 @@
       // setContext('comm-context', { pageNr: page });
       pageNr.set(page);
 
-      switch (page) {
-        case 0:
-          goto("/globe");
-          break;
-        case 7:
-          goto("/faceid");
-          break;
-        default:
-          goto("/");
-      }
+      // switch (page) {
+      //   case 0:
+      //     goto("/globe");
+      //     break;
+      //   case 7:
+      //     goto("/faceapi");
+      //     break;
+      //   default:
+      //     goto("/");
+      // }
     };
   });
 </script>
