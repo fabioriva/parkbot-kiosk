@@ -13,7 +13,7 @@
     src={PUBLIC_CAMERA_SRC}
     title="picamera video streaming"
     width="480"
-    height="270"
+    height="360"
     scrolling="no"
     marginwidth="0"
     marginheight="0"
