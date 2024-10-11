@@ -69,6 +69,9 @@
         case 7:
           goto("/faceapi");
           break;
+        case 8:
+          goto("/deepface");
+          break;
         default:
           goto("/");
       }
