@@ -61,7 +61,7 @@
       page = message["page"];
       // setContext('comm-context', { pageNr: page });
       pageNr.set(page);
-
+      // console.log(page);
       switch (page) {
         case 0:
           goto("/globe");

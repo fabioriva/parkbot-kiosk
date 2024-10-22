@@ -1,14 +1,14 @@
 <script>
-  // import { PUBLIC_CAMERA_SRC } from "$env/static/public";
+  import { PUBLIC_CAMERA_SRC } from "$env/static/public";
   import { t } from "$lib/i18n";
   import Text from "$lib/Text.svelte";
 
   // const VIDEO_SRC = "seattle.mp4"
-  const VIDEO_SRC = "https://sveltejs.github.io/assets/caminandes-llamigos.mp4";
+  // const VIDEO_SRC = "https://sveltejs.github.io/assets/caminandes-llamigos.mp4";
 </script>
 
 <div class="space-y-8">
-  <video
+  <!-- <video
     autoplay
     loop
     muted
@@ -16,8 +16,8 @@
     class="px-0"
     width="480"
     height="360"
-  />
-  <!-- <iframe
+  /> -->
+  <iframe
     src={PUBLIC_CAMERA_SRC}
     title="picamera video streaming"
     width="480"
@@ -26,7 +26,7 @@
     marginwidth="0"
     marginheight="0"
     frameborder="0"
-  ></iframe> -->
+  ></iframe>
   <div class="flex flex-col">
     <Text text={$t("start.text1")} />
     <Text text={$t("start.text2")} />

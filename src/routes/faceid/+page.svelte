@@ -2,42 +2,53 @@
   import { PUBLIC_CAMERA_SRC } from "$env/static/public";
   import { onMount } from "svelte";
 
-  // onMount(() => {
-  //   const width = 320; // We will scale the photo width to this
-  //   let height = 0; // This will be computed based on the input stream
+  let video;
+  let canvas;
+  let photo;
+  // let startButton;
 
-  //   video = document.getElementById("video");
-  //   canvas = document.getElementById("canvas");
-  //   photo = document.getElementById("photo");
-
-  //   function clearphoto() {
-  //     const context = canvas.getContext("2d");
-  //     context.fillStyle = "#AAA";
-  //     context.fillRect(0, 0, canvas.width, canvas.height);
-
-  //     const data = canvas.toDataURL("image/png");
-  //     photo.setAttribute("src", data);
-  //   }
-
-  //   function takepicture() {
-  //     const context = canvas.getContext("2d");
-  //     if (width && height) {
-  //       canvas.width = width;
-  //       canvas.height = height;
-  //       context.drawImage(video, 0, 0, width, height);
-
-  //       const data = canvas.toDataURL("image/png");
-  //       photo.setAttribute("src", data);
-  //     } else {
-  //       clearphoto();
-  //     }
-  //   }
-  // });
+  onMount(() => {
+    //   const width = 320; // We will scale the photo width to this
+    //   let height = 0; // This will be computed based on the input stream
+    //   video = document.getElementById("video");
+    //   canvas = document.getElementById("canvas");
+    //   photo = document.getElementById("photo");
+    //   startbutton = document.getElementById("startbutton");
+    //   startbutton.addEventListener(
+    //     "click",
+    //     (ev) => {
+    //       takepicture();
+    //       ev.preventDefault();
+    //     },
+    //     false
+    //   );
+    //   function clearphoto() {
+    //     const context = canvas.getContext("2d");
+    //     context.fillStyle = "#AAA";
+    //     context.fillRect(0, 0, canvas.width, canvas.height);
+    //     const data = canvas.toDataURL("image/png");
+    //     photo.setAttribute("src", data);
+    //   }
+    //   function takepicture() {
+    //     console.log("Ciao");
+    //     const context = canvas.getContext("2d");
+    //     if (width && height) {
+    //       canvas.width = width;
+    //       canvas.height = height;
+    //       context.drawImage(video, 0, 0, width, height);
+    //       const data = canvas.toDataURL("image/png");
+    //       photo.setAttribute("src", data);
+    //     } else {
+    //       clearphoto();
+    //     }
+    //   }
+  });
 </script>
 
 <div>
   <p>picamera video streaming</p>
   <iframe
+    bind:this={video}
     id="video"
     src={PUBLIC_CAMERA_SRC}
     title="picamera video streaming"
@@ -48,15 +59,15 @@
     marginheight="0"
     frameborder="0"
   ></iframe>
-  <button
-    class="active:bg-green-500"
-    id="startbutton"
-    on:click={() => alert("clicked")}>Take photo</button
-  >
+  <button>Take photo</button>
 </div>
-<canvas id="canvas"> </canvas>
+<canvas bind:this={canvas} id="canvas"> </canvas>
 <div class="output">
-  <img id="photo" alt="The screen capture will appear in this box." />
+  <img
+    bind:this={photo}
+    id="photo"
+    alt="The screen capture will appear in this box."
+  />
 </div>
 
 <style>
